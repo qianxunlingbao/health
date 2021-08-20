@@ -33,7 +33,7 @@
 						<text>{{item.name}}</text><br>
 						<text style="font-size: 25rpx;color: gray;">地址：{{item.address}}</text><br>
 						<text style="font-size: 25rpx;color: gray;">
-							招募：<sapn style="color: red;font-weight: bold;">{{item.recruit}}</sapn>名&nbsp&nbsp&nbsp 已招募：<sapn style="color: red;font-weight: bold;">{{item.overrecruit}}</sapn>名
+							招募：<span style="color: red;font-weight: bold;">{{item.recruit}}</span>名&nbsp&nbsp&nbsp 已招募：<span style="color: red;font-weight: bold;">{{item.overrecruit}}</span>名
 						</text><br>
 						<text style="font-size: 25rpx;color: gray;">{{item.time}}</text>
 					</view>

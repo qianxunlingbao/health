@@ -123,7 +123,9 @@
 			// 打开康养商城
 			openFifth(){
 				uni.navigateTo({
-					url: '/pages/shopping/shopping',
+					// url: '/pages/shopping/shopping',
+					url: '/pages/life/supermarket/supermarket',
+					// url: '/pages/life/market/market',
 					success: res => {},
 					fail: () => {},
 					complete: () => {}

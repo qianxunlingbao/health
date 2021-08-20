@@ -413,6 +413,71 @@
             }
             
         }
+        ,{
+            "path" : "pages/user/parentManage/parentManage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/message/message",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/activitis/activitis",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/userMessage/userMessage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/life/supermarket/supermarket",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#7A7E83",

@@ -1,88 +1,124 @@
 <template>
-	<view class="page1">
-		<view class="nav">
-			<u-navbar :background="background" title-size="44" :is-back="false" title="我的" title-color="white">
+	<view>
+		<view>
+			<u-navbar :is-back="false" :background="background" title-size="44" back-icon-color="white" title="我的"
+				title-color="white">
+				<view slot="right">
+					<image @click="openMessage" style="width: 80rpx;height: 70rpx;"
+						src="../../static/images/xiaoxi.png"></image>
+				</view>
 			</u-navbar>
 		</view>
-		<view class="header">
-			<view style="padding-top: 10%;" v-if="this.showInfo == false">
-				<u-button type="success" @click="login" class="anniu">立即登录</u-button>
+		<view class="page1">
+			<view class="header">
+				<view style="padding-top: 10%;" v-if="this.showInfo == false">
+					<u-button type="success" @click="login" class="anniu">立即登录</u-button>
+				</view>
+				<view style="width: 70%;margin: 0 auto;padding-top: 4%;">
+					<u-avatar :src="src" mode="circle" v-if="this.showInfo == true">
+					</u-avatar>
+					<view style="
+						width: 10%;
+						position: absolute;
+						margin-top: -13%;
+						margin-left: 15%;
+						">
+						<text style="float: left;font-size: 45rpx;color: white;" v-if="this.showInfo == true">
+							{{this.infoData.username}}
+						</text>
+						<u-button style="float: left;width: 150rpx;height: 35rpx;background-color: #20B2AA"
+							type="success" v-if="this.showInfo == true">实名认证</u-button>
+					</view>
+				</view>
+				<view style="color: white;margin-top: 10%;margin: 0 auto;width: 78.8%;height: 30%;">
+					<view style="text-align: center;width: 25%;float: left;margin-left: 7%;">
+						<text>15</text><br>
+						<text>我的参与</text>
+					</view>
+					<view style="text-align: center;width: 25%;float: left;margin-left: 7%;">
+						<text>72h</text><br>
+						<text>公益时长</text>
+					</view>
+					<view style="text-align: center;width: 25%;float: left;margin-left: 6.5%;">
+						<text>320</text><br>
+						<text>我的积分</text>
+					</view>
+				</view>
 			</view>
-			<u-avatar 
-				class="touxiang"
-				:src="src" mode="circle" v-if="this.showInfo == true">
-			</u-avatar>
-			<text class="user" v-if="this.showInfo == true">
-				{{this.infoData.username}}
-			</text>
-		</view>
-		<view class="top">
-			<u-grid :col="4">
-				<u-grid-item>
-					<image @click="firstClick" class="top1" src="../../static/images/car.png"></image>
-					<view class="grid-text">待发货</view>
-				</u-grid-item>
-				<u-grid-item>
-					<image @click="secondClick" class="top1" src="../../static/images/car1.png"></image>
-					<view class="grid-text">待收货</view>
-				</u-grid-item>
-				<u-grid-item>
-					<image @click="thirdClick" class="top1" src="../../static/images/car2.png"></image>
-					<view class="grid-text">待评价</view>
-				</u-grid-item>
-				<u-grid-item>
-					<image @click="fourthClick" class="top1" src="../../static/images/car3.png"></image>
-					<view class="grid-text">全部订单</view>
-				</u-grid-item>
-			</u-grid>
-		</view>
-		<u-toast ref="uToast1" />
-		<view style="margin: 15rpx auto;
-		width: 95%;
-		border: 0.5rpx solid white;
-		box-shadow: 0 0 10rpx 0.5rpx gray;">
-			<u-cell-item @click="openParent" title="家人管理" arrow-direction="down">
-				<u-icon slot="icon" color="red" size="32" name="moments"></u-icon>
-			</u-cell-item>
-			<u-cell-item @click="openMyinqury" title="我的问诊" arrow-direction="down">
-				<u-icon slot="icon" color="orange" size="32" name="moments"></u-icon>
-			</u-cell-item>
-			<u-cell-item @click="openEquipMent" title="设备管理" arrow-direction="down">
-				<u-icon slot="icon" color="yellow" size="32" name="moments"></u-icon>
-			</u-cell-item>
-			<u-cell-item @click="openEditPass" title="修改密码" arrow-direction="down">
-				<u-icon slot="icon" color="blue" size="32" name="moments"></u-icon>
-			</u-cell-item>
-			<!-- <uni-list>
-				<uni-list-item title="家人管理" note="Family management" showArrow>
-					<view slot="header" class="center1">
-						<image class="imgCenter" src="/static/images/Employees.png" mode="widthFix" />
-					</view>
-				</uni-list-item>
-				<uni-list-item title="我的问诊" note="My consultation" showArrow>
-					<view slot="header" class="center1">
-						<image class="imgCenter" src="/static/images/Surgeo.png" mode="widthFix" />
-					</view>
-				</uni-list-item>
-				<uni-list-item @click="openEquipMent" link title="设备管理" note="device management" showArrow>
-					<view slot="header" class="center2">
-						<image class="imgCenter1" src="/static/images/car4.png" mode="widthFix" />
-					</view>
-				</uni-list-item>
-				<uni-list-item @click="openEditPass" link title="修改密码" note="Change Password" showArrow>
-					<view slot="header" class="center1">
-						<image class="imgCenter" src="/static/images/Locked.png" mode="widthFix" />
-					</view>
-				</uni-list-item>
-			</uni-list> -->
-		</view>
-		<view class="foot">
-			<u-toast ref="uToast" />
-			<u-modal v-model="show" :content="content"></u-modal>
-			<!-- <u-button @click="login" v-if="this.showInfo" class="anniu">登录</u-button> -->
-			<u-button @click="open" v-if="this.showInfo" class="anniu">退出登录</u-button>
-			<!-- <u-button @click="open" v-if="this.showInfo" class="anniu">退出登录</u-button>
-			<u-button @click="login" v-if="this.showLogin" class="anniu">登录</u-button> -->
+			<view class="top">
+				<u-grid :col="4">
+					<u-grid-item>
+						<image @click="firstClick" class="top1" src="../../static/images/car.png"></image>
+						<view class="grid-text">待发货</view>
+					</u-grid-item>
+					<u-grid-item>
+						<image @click="secondClick" class="top1" src="../../static/images/car1.png"></image>
+						<view class="grid-text">待收货</view>
+					</u-grid-item>
+					<u-grid-item>
+						<image @click="thirdClick" class="top1" src="../../static/images/car2.png"></image>
+						<view class="grid-text">待评价</view>
+					</u-grid-item>
+					<u-grid-item>
+						<image @click="fourthClick" class="top1" src="../../static/images/car3.png"></image>
+						<view class="grid-text">全部订单</view>
+					</u-grid-item>
+				</u-grid>
+			</view>
+			<u-toast ref="uToast1" />
+			<view style="margin: 15rpx auto;
+			width: 95%;
+			border: 0.5rpx solid white;
+			box-shadow: 0 0 10rpx 0.5rpx gray;">
+				<u-cell-item @click="openUserMessage" title="基本信息" arrow-direction="down">
+					<u-icon slot="icon" color="#1afa29" size="32" name="moments"></u-icon>
+				</u-cell-item>
+				<u-cell-item @click="openParent" title="家人管理" arrow-direction="down">
+					<u-icon slot="icon" color="red" size="32" name="moments"></u-icon>
+				</u-cell-item>
+				<u-cell-item @click="openActivity" title="参与的活动" arrow-direction="down">
+					<u-icon slot="icon" color="#8A2BE2" size="32" name="moments"></u-icon>
+				</u-cell-item>
+				<u-cell-item @click="openMyinqury" title="我的问诊" arrow-direction="down">
+					<u-icon slot="icon" color="orange" size="32" name="moments"></u-icon>
+				</u-cell-item>
+				<u-cell-item @click="openEquipMent" title="设备管理" arrow-direction="down">
+					<u-icon slot="icon" color="yellow" size="32" name="moments"></u-icon>
+				</u-cell-item>
+				<u-cell-item @click="openEditPass" title="修改密码" arrow-direction="down">
+					<u-icon slot="icon" color="blue" size="32" name="moments"></u-icon>
+				</u-cell-item>
+				<!-- <uni-list>
+					<uni-list-item title="家人管理" note="Family management" showArrow>
+						<view slot="header" class="center1">
+							<image class="imgCenter" src="/static/images/Employees.png" mode="widthFix" />
+						</view>
+					</uni-list-item>
+					<uni-list-item title="我的问诊" note="My consultation" showArrow>
+						<view slot="header" class="center1">
+							<image class="imgCenter" src="/static/images/Surgeo.png" mode="widthFix" />
+						</view>
+					</uni-list-item>
+					<uni-list-item @click="openEquipMent" link title="设备管理" note="device management" showArrow>
+						<view slot="header" class="center2">
+							<image class="imgCenter1" src="/static/images/car4.png" mode="widthFix" />
+						</view>
+					</uni-list-item>
+					<uni-list-item @click="openEditPass" link title="修改密码" note="Change Password" showArrow>
+						<view slot="header" class="center1">
+							<image class="imgCenter" src="/static/images/Locked.png" mode="widthFix" />
+						</view>
+					</uni-list-item>
+				</uni-list> -->
+			</view>
+			<view class="foot">
+				<u-toast ref="uToast" />
+				<u-modal v-model="show" :content="content"></u-modal>
+				<!-- <u-button @click="login" v-if="this.showInfo" class="anniu">登录</u-button> -->
+				<u-button @click="open" v-if="this.showInfo" class="anniu">退出登录</u-button>
+				<!-- <u-button @click="open" v-if="this.showInfo" class="anniu">退出登录</u-button>
+				<u-button @click="login" v-if="this.showLogin" class="anniu">登录</u-button> -->
+			</view>
 		</view>
 	</view>
 </template>
@@ -96,7 +132,7 @@
 		},
 		data() {
 			return {
-				infoData:[],
+				infoData: [],
 				title: '我的',
 				background: {
 					backgroundColor: '#007AFF',
@@ -113,7 +149,7 @@
 		onShow() {
 			this.info = uni.getStorageSync('info')
 			console.log(this.info)
-			if(this.info == 1){
+			if (this.info == 1) {
 				this.showInfo = true
 				request({
 					url: `http://121.89.195.17/mall-portal/sso/info`, //获取会员信息
@@ -132,8 +168,7 @@
 				});
 			}
 		},
-		mounted() {
-		},
+		mounted() {},
 		methods: {
 			open() {
 				this.show = true
@@ -151,7 +186,7 @@
 				// 	url: '/pages/login/login',		
 				// })
 				uni.redirectTo({
-					url:'/pages/login/login',
+					url: '/pages/login/login',
 				})
 				// uni.removeStorage('storage_key')
 				// this.show = false
@@ -159,7 +194,7 @@
 				// this.showLogin = false
 			},
 			//修改密码
-			openEditPass(){
+			openEditPass() {
 				// this.$refs.uToast1.show({
 				// 	title: '修改密码',
 				// 	type: 'warning',
@@ -167,11 +202,11 @@
 				// 	url: '/pages/editPass/editPass'
 				// })
 				uni.redirectTo({
-					url:'/pages/editPass/editPass'
+					url: '/pages/editPass/editPass'
 				})
 			},
 			//设备管理
-			openEquipMent(){
+			openEquipMent() {
 				// this.$refs.uToast1.show({
 				// 	title: '设备管理',
 				// 	type: 'warning',
@@ -179,48 +214,63 @@
 				// 	url: '/pages/equipMent/equipMent'
 				// })
 				uni.redirectTo({
-					url:'/pages/equipMent/equipMent'
+					url: '/pages/equipMent/equipMent'
 				})
 			},
 			//待发货
 			firstClick() {
 				uni.navigateTo({
-					url:'/pages/toBeShipped/toBeShipped'
+					url: '/pages/toBeShipped/toBeShipped'
 				})
 			},
 			//待收货
 			secondClick() {
 				uni.navigateTo({
-					url:'/pages/receivedGoods/receivedGoods'
+					url: '/pages/receivedGoods/receivedGoods'
 				})
 			},
 			//待评价
 			thirdClick() {
 				uni.navigateTo({
-					url:'/pages/evaluatedTo/evaluatedTo'
+					url: '/pages/evaluatedTo/evaluatedTo'
 				})
 			},
 			//全部订单
 			fourthClick() {
 				uni.navigateTo({
-					url:'/pages/allOrders/allOrders'
+					url: '/pages/allOrders/allOrders'
 				})
 			},
 			//我的问诊
-			openMyinqury(){
+			openMyinqury() {
 				uni.navigateTo({
-					url:'/pages/myInquiry/index'
+					url: '/pages/myInquiry/index'
 				})
 			},
 			//家人管理
-			openParent(){
-				this.$refs.uToast1.show({
-					title: '界面还在赶工',
-					type: 'warning',
-					// duration: 200,
-					// url: '/pages/editPass/editPass'
+			openParent() {
+				uni.navigateTo({
+					url: '/pages/user/parentManage/parentManage'
 				})
-			}
+			},
+			//参与的活动
+			openActivity() {
+				uni.navigateTo({
+					url: '/pages/user/activitis/activitis'
+				})
+			},
+			//打开消息
+			openMessage() {
+				uni.navigateTo({
+					url: '/pages/user/message/message'
+				})
+			},
+			//基本信息
+			openUserMessage() {
+				uni.navigateTo({
+					url: '/pages/user/userMessage/userMessage'
+				})
+			},
 		}
 	}
 </script>
@@ -229,74 +279,81 @@
 	/* 头部蓝色背景 */
 	.header {
 		width: 100%;
-		height: 280rpx;
+		height: 20%;
 		background-color: #007AFF;
 		border-bottom-left-radius: 50%;
 		border-bottom-right-radius: 50%;
 	}
-	.top{
+
+	.top {
 		margin: 15rpx auto;
 		width: 95%;
-		height: 15%;
+		height: 15vh;
 		border: 0.5rpx solid white;
 		box-shadow: 0 0 10rpx 0.5rpx gray;
 	}
+
 	/* 登录或者退出登录按钮的位置 */
-	.foot{
+	.foot {
 		margin-top: 5vh;
 	}
+
 	/* 全局界面颜色,高度,宽度 */
 	page {
 		height: 100%;
 	}
+
 	.page1 {
-		width: 100%;
-		height: 100%;
+		height: 100vh;
 	}
-	/* 用户头像 */
-	.touxiang{
-		width: 18%;
-		height: 49%;
-		margin-left: 15%;
-		margin-top: 10%;
-	}
+
+	/* 用户头像
+	.touxiang{ */
+	/* 		width: 20%;
+		height: 55%; */
+	/* 	margin-left: 15%;
+		margin-top: 5%;
+	} */
 	/* 用户名称 */
-	.user{
+	/* .user{
 		color: white;
-		font-size: 45rpx;
+		font-size: 40rpx;
 		position: absolute;
-		margin-top: 12%;
-		margin-left: 1%;
+		margin-top: 5%;
+		margin-left: 3%;
 	}
-	
+	 */
 	/* 待发货列表横向 */
-	.top1{
+	.top1 {
 		width: 70%;
 		height: 7vh;
 	}
-	
+
 	/* 家人管理列表 */
-	.center1{
+	.center1 {
 		margin-left: 10rpx;
 		margin-right: 5%;
 		margin-top: 1%;
 	}
-	.center2{
+
+	.center2 {
 		margin-left: -8rpx;
 		margin-right: 2.5%;
 		margin-top: 1%;
 	}
-	
+
 	/* 家人管理列表中的图片大小 */
-	.imgCenter{
+	.imgCenter {
 		width: 50rpx;
 		height: 50rpx;
 	}
-	.imgCenter1{
+
+	.imgCenter1 {
 		width: 80rpx;
 		height: 50rpx;
 	}
-	.anniu{
+
+	.anniu {
 		font-size: 40rpx;
 		width: 50%;
 	}

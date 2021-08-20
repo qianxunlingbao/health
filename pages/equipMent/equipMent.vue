@@ -15,12 +15,21 @@
 		<view style="width: 90%;margin: 0 auto;line-height: 50rpx;margin-top: 20rpx;">
 			<text>在线登录设备(1)</text>
 			<br>
-			<text style="color: gray;">下线后该设备账号会被退出，再次登录需要身份验证</text>
+			<text style="color: gray;font-size: 20rpx;">下线后该设备账号会被退出，再次登录需要身份验证</text>
 		</view>
 		<view style="width: 100%;background-color: white;">
-			<view style="width: 90%;margin: 0 auto;">
-				<image style="width: 50rpx;height: 70rpx" src="../../static/images/Employees.png"></image>
-	
+			<view style="width: 90%;margin: 0 auto;background-color: white;">
+				<image style="width: 50rpx;height: 70rpx;float: left;" src="../../static/images/tel.png"></image>
+				<text style="margin-left: 20rpx;float: left;margin-top: 15rpx;">
+					HWJEF
+					<span style="color: #1296db;margin-left: 10rpx;">(当前设备)</span>
+				</text>
+			</view>
+			<br>
+			<br>
+			<view style="width: 90%;margin: 0 auto;background-color: white;margin-top: 2%;">
+				<text style="color: gray;">设备类型：JEF-AN00</text><br>
+				<text style="color: gray;">最近登录：2021-07-28 01：03</text>
 			</view>
 		</view>
 	</view>
