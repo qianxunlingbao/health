@@ -478,6 +478,213 @@
             }
             
         }
+        ,{
+            "path" : "pages/healthServices/healthServices",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }  
+        }
+		,{
+            "path" : "pages/life/life",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/serverInt/serverInt",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/life/lzgh/lzgh",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/life/xlzx/xlzx",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/life/stky/stky",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/life/jkzc/jkzc",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/life/jzfw/jzfw",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/life/rjzl/rjzl",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/healthServices/jkwh/jkwh",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/healthServices/zcjd/zcjd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/healthServices/gmfw/gmfw",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/healthServices/zhxm/zhxm",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/healthServices/yljg/yljg",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/healthServices/jgky/jgky",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/serverInt/wdjs/wdjs",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#7A7E83",
@@ -485,20 +692,20 @@
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [{
-			"pagePath": "pages/parent/index",
-			"iconPath": "static/images/friend.png",
-			"selectedIconPath": "static/images/friend-pitch.png",
-			"text": "家人"
+			"pagePath": "pages/healthServices/healthServices",
+			"iconPath": "static/images/healthServer.png",
+			"selectedIconPath": "static/images/healthServerGray.png",
+			"text": "健康服务"
 		}, {
-			"pagePath": "pages/life/index",
+			"pagePath": "pages/life/life",
 			"iconPath": "static/images/Treeofblackfoliage.png",
 			"selectedIconPath": "static/images/Treeofblackfoliage-pitch.png",
 			"text": "生活服务"
 		},  {
-			"pagePath": "pages/shop/index",
-			"iconPath": "static/images/supermarket.png",
-			"selectedIconPath": "static/images/supermarket-pitch.png",
-			"text": "购物车"
+			"pagePath": "pages/serverInt/serverInt",
+			"iconPath": "static/images/serverGray.png",
+			"selectedIconPath": "static/images/server.png",
+			"text": "服务网点"
 		}, {
 			"pagePath": "pages/user/index",
 			"iconPath": "static/images/my.png",

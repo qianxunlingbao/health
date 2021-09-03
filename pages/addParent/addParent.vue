@@ -438,12 +438,9 @@
 					    // console.log('success');
 					}
 				})
-				uni.switchTab({
-					url: `/pages/parent/index`,
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
+				uni.navigateBack({
+					delta: 1
+				})
 			},
 			//关系情况
 			//下拉框

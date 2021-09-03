@@ -30,7 +30,7 @@
 							type="success" v-if="this.showInfo == true">实名认证</u-button>
 					</view>
 				</view>
-				<view style="color: white;margin-top: 10%;margin: 0 auto;width: 78.8%;height: 30%;">
+				<!-- <view style="color: white;margin-top: 10%;margin: 0 auto;width: 78.8%;height: 30%;">
 					<view style="text-align: center;width: 25%;float: left;margin-left: 7%;">
 						<text>15</text><br>
 						<text>我的参与</text>
@@ -43,9 +43,9 @@
 						<text>320</text><br>
 						<text>我的积分</text>
 					</view>
-				</view>
+				</view> -->
 			</view>
-			<view class="top">
+			<!-- <view class="top">
 				<u-grid :col="4">
 					<u-grid-item>
 						<image @click="firstClick" class="top1" src="../../static/images/car.png"></image>
@@ -64,58 +64,27 @@
 						<view class="grid-text">全部订单</view>
 					</u-grid-item>
 				</u-grid>
-			</view>
+			</view> -->
 			<u-toast ref="uToast1" />
-			<view style="margin: 15rpx auto;
-			width: 95%;
-			border: 0.5rpx solid white;
-			box-shadow: 0 0 10rpx 0.5rpx gray;">
-				<u-cell-item @click="openUserMessage" title="基本信息" arrow-direction="down">
-					<u-icon slot="icon" color="#1afa29" size="32" name="moments"></u-icon>
-				</u-cell-item>
-				<u-cell-item @click="openParent" title="家人管理" arrow-direction="down">
-					<u-icon slot="icon" color="red" size="32" name="moments"></u-icon>
-				</u-cell-item>
-				<u-cell-item @click="openActivity" title="参与的活动" arrow-direction="down">
-					<u-icon slot="icon" color="#8A2BE2" size="32" name="moments"></u-icon>
-				</u-cell-item>
-				<u-cell-item @click="openMyinqury" title="我的问诊" arrow-direction="down">
-					<u-icon slot="icon" color="orange" size="32" name="moments"></u-icon>
-				</u-cell-item>
-				<u-cell-item @click="openEquipMent" title="设备管理" arrow-direction="down">
-					<u-icon slot="icon" color="yellow" size="32" name="moments"></u-icon>
-				</u-cell-item>
-				<u-cell-item @click="openEditPass" title="修改密码" arrow-direction="down">
-					<u-icon slot="icon" color="blue" size="32" name="moments"></u-icon>
-				</u-cell-item>
-				<!-- <uni-list>
-					<uni-list-item title="家人管理" note="Family management" showArrow>
-						<view slot="header" class="center1">
-							<image class="imgCenter" src="/static/images/Employees.png" mode="widthFix" />
-						</view>
-					</uni-list-item>
-					<uni-list-item title="我的问诊" note="My consultation" showArrow>
-						<view slot="header" class="center1">
-							<image class="imgCenter" src="/static/images/Surgeo.png" mode="widthFix" />
-						</view>
-					</uni-list-item>
-					<uni-list-item @click="openEquipMent" link title="设备管理" note="device management" showArrow>
-						<view slot="header" class="center2">
-							<image class="imgCenter1" src="/static/images/car4.png" mode="widthFix" />
-						</view>
-					</uni-list-item>
-					<uni-list-item @click="openEditPass" link title="修改密码" note="Change Password" showArrow>
-						<view slot="header" class="center1">
-							<image class="imgCenter" src="/static/images/Locked.png" mode="widthFix" />
-						</view>
-					</uni-list-item>
-				</uni-list> -->
-			</view>
+			<u-row gutter="16" justify="space-around">
+				<u-col span="12" style="margin-bottom: 20rpx;">
+					<uni-list>
+						<uni-list-item style="height: 100rpx;" link @click="click(index)" v-for="(item,index) in data" :key="index">
+							<view slot="header" style="margin-left: 0rpx;margin-right: 5%;margin-top: 4%;">
+								<image style="width: 50rpx;height: 50rpx;" :src="item.image" />
+							</view>
+							<view slot="body" style="margin-top: 5%">
+								<text >{{item.name}}</text><br><br>
+							</view>
+						</uni-list-item>
+					</uni-list>
+				</u-col>
+			</u-row>
 			<view class="foot">
 				<u-toast ref="uToast" />
 				<u-modal v-model="show" :content="content"></u-modal>
 				<!-- <u-button @click="login" v-if="this.showInfo" class="anniu">登录</u-button> -->
-				<u-button @click="open" v-if="this.showInfo" class="anniu">退出登录</u-button>
+				<u-button size="default" @click="open" v-if="this.showInfo" class="anniu">退出登录</u-button>
 				<!-- <u-button @click="open" v-if="this.showInfo" class="anniu">退出登录</u-button>
 				<u-button @click="login" v-if="this.showLogin" class="anniu">登录</u-button> -->
 			</view>
@@ -132,6 +101,35 @@
 		},
 		data() {
 			return {
+				data: [{
+						name: '基本信息',
+						image: '../../static/images/my.png'
+					},
+					{
+						name: '家人管理',
+						image: '../../static/images/Employees.png'
+					},
+					{
+						name: '问诊记录',
+						image: '../../static/images/Surgeo.png'
+					},
+					{
+						name: '设备管理',
+						image: '../../static/images/sbgl.png'
+					},
+					{
+						name: '我的购买',
+						image: '../../static/images/shop.png'
+					},
+					{
+						name: '我的参与',
+						image: '../../static/images/Myparticipation.png'
+					},
+					{
+						name: '修改密码',
+						image: '../../static/images/Locked.png'
+					},
+				],
 				infoData: [],
 				title: '我的',
 				background: {
@@ -170,6 +168,42 @@
 		},
 		mounted() {},
 		methods: {
+			click(e){
+				console.log(e)
+				if(e == 0){ //基本信息
+					uni.navigateTo({
+						url: '/pages/user/userMessage/userMessage'
+					})
+				}
+				if(e == 1){ //家人管理
+					uni.navigateTo({
+						url: '/pages/user/parentManage/parentManage'
+					})
+				}
+				if(e == 2){//问诊记录
+					uni.navigateTo({
+						url: '/pages/myInquiry/index'
+					})
+				}
+				if(e == 3){//设备管理
+					uni.navigateTo({
+						url: '/pages/equipMent/equipMent'
+					})
+				}
+				if(e == 4){//我的购买
+					
+				}
+				if(e == 5){//我的参与
+					uni.navigateTo({
+						url: '/pages/user/activitis/activitis'
+					})
+				}
+				if(e == 6){//修改密码
+					uni.navigateTo({
+						url: '/pages/editPass/editPass'
+					})
+				}
+			},
 			open() {
 				this.show = true
 				this.showInfo = false
@@ -192,30 +226,6 @@
 				// this.show = false
 				// this.showInfo = true
 				// this.showLogin = false
-			},
-			//修改密码
-			openEditPass() {
-				// this.$refs.uToast1.show({
-				// 	title: '修改密码',
-				// 	type: 'warning',
-				// 	duration: 200,
-				// 	url: '/pages/editPass/editPass'
-				// })
-				uni.redirectTo({
-					url: '/pages/editPass/editPass'
-				})
-			},
-			//设备管理
-			openEquipMent() {
-				// this.$refs.uToast1.show({
-				// 	title: '设备管理',
-				// 	type: 'warning',
-				// 	duration: 200,
-				// 	url: '/pages/equipMent/equipMent'
-				// })
-				uni.redirectTo({
-					url: '/pages/equipMent/equipMent'
-				})
 			},
 			//待发货
 			firstClick() {
@@ -241,34 +251,10 @@
 					url: '/pages/allOrders/allOrders'
 				})
 			},
-			//我的问诊
-			openMyinqury() {
-				uni.navigateTo({
-					url: '/pages/myInquiry/index'
-				})
-			},
-			//家人管理
-			openParent() {
-				uni.navigateTo({
-					url: '/pages/user/parentManage/parentManage'
-				})
-			},
-			//参与的活动
-			openActivity() {
-				uni.navigateTo({
-					url: '/pages/user/activitis/activitis'
-				})
-			},
 			//打开消息
 			openMessage() {
 				uni.navigateTo({
 					url: '/pages/user/message/message'
-				})
-			},
-			//基本信息
-			openUserMessage() {
-				uni.navigateTo({
-					url: '/pages/user/userMessage/userMessage'
 				})
 			},
 		}
@@ -279,7 +265,7 @@
 	/* 头部蓝色背景 */
 	.header {
 		width: 100%;
-		height: 20%;
+		height: 15%;
 		background-color: #007AFF;
 		border-bottom-left-radius: 50%;
 		border-bottom-right-radius: 50%;
@@ -355,6 +341,6 @@
 
 	.anniu {
 		font-size: 40rpx;
-		width: 50%;
+		/* width: 100%; */
 	}
 </style>
