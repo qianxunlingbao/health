@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "echarts": "^5.4.2",
+    "js-md5": "^0.7.3",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",
     "uview-ui": "^1.8.4"
