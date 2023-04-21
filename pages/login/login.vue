@@ -23,7 +23,8 @@
 				</u-form>
 				<!-- <view class="footer"> -->
 				<view>
-					<u-button style="background-color: lightgreen;" shape="circle" text="按钮形状" @click="login">登录</u-button>
+					<u-button style="background-color: lightgreen;" shape="circle" text="按钮形状"
+						@click="login">登录</u-button>
 					<!-- <text class="xinren" @click="logon">新人注册</text>
 					<text class="wangji" @click="forgetPass">忘记密码</text> -->
 				</view>
@@ -78,9 +79,6 @@
 		<view style="width: 100%;height: 300px;">
 			<canvas style="width: 90%;margin: auto;height: 300px;" id="myEcharts"></canvas>
 		</view>
-		<view style="width: 90%;margin: auto;">
-			
-		</view>
 	</view>
 </template>
 
@@ -91,6 +89,22 @@
 	export default {
 		data() {
 			return {
+				chartData: {},
+				opts: {
+					xAxis: {
+						disableGrid: true
+					},
+					yAxis: {
+						data: [{
+							min: 0
+						}]
+					},
+					extra: {
+						column: {
+							type: "group"
+						}
+					}
+				},
 				myChart: null,
 				showTody: false,
 				olderlist: [],
@@ -139,7 +153,7 @@
 		},
 		mounted() {
 			uni.request({
-				url: `http://chuangyou.yunyiit.com/captcha?Math.random()`, //注册接口
+				url: `http://chuangyou.yunyiit.com/captcha?Math.random()`, //验证码接口
 				header: {
 					'content-type': 'application/x-www-form-urlencoded',
 					// 'X-CSRF-TOKEN':'xxx'
@@ -167,6 +181,7 @@
 		},
 		methods: {
 			async drawLines() {
+				// async drawLines(xdata,ydata) {
 				// 这里是初始化的方式，通过id查询找到你的canvas标签
 				this.myChart = echarts.init(document.getElementById('myEcharts'));
 				// 这里我初始化了4个数组用来存放 后端接口给我的数据
@@ -179,7 +194,7 @@
 					// x轴数据
 					xAxis: {
 						type: 'category',
-						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 					},
 					// y轴数据
 					yAxis: {
@@ -188,7 +203,7 @@
 					// 这里写2个对象是2条线条，3个则是3条
 					series: [{
 						// data使用刚才定义的数组，数据从后端接口中取得
-						data: [150, 230, 224, 218, 135, 147, 260],
+						data:  [150, 230, 224, 218, 135, 147, 260],
 						type: 'line',
 						smooth: true,
 					}],
@@ -215,7 +230,7 @@
 						// let ps = md5(this.form.pass)
 						// console.log(ps)
 						uni.request({
-							url: `http://chuangyou.yunyiit.com/login/login`, //注册接口
+							url: `http://chuangyou.yunyiit.com/login/login`, //登录接口
 							header: {
 								'content-type': 'application/x-www-form-urlencoded',
 								// 'X-CSRF-TOKEN':'xxx'
@@ -231,38 +246,30 @@
 							success: (res) => {
 								if (res.statusCode === 200) {
 									console.log(res)
+									uni.switchTab({
+										url: `/pages/aCustInfo/aCustInfo`,
+									})
+									uni.setStorage({
+										key: '_token',
+										data: res.data._token,
+										success: function() {
+											console.log('token保存成功');
+										}
+									});
+
 									uni.request({
 										url: `http://chuangyou.yunyiit.com/api.Report/sale`, //销售报表
 										header: {
 											'content-type': 'application/x-www-form-urlencoded',
 											'X-CSRF-TOKEN': res.data._token
 										},
-										data:{
-											timeType:'all',
-											timeDate:'2022-03-21'
+										data: {
+											timeType: 'all',
+											timeDate: '2022-03-21'
 										},
 										success: (res) => {
 											if (res.statusCode === 200) {
-												console.log(res.data)
-											}
-										},
-										fail: err => {
-											console.log(err);
-										},
-									})
-									uni.request({
-										url: `http://chuangyou.yunyiit.com/api.statistics/getInfo`, //概况
-										header: {
-											'content-type': 'application/x-www-form-urlencoded',
-											'X-CSRF-TOKEN': res.data._token
-										},
-										data:{
-											timeType:'all',
-											timeDate:'2022-03-21'
-										},
-										success: (res) => {
-											if (res.statusCode === 200) {
-												console.log(res.data)
+												console.log(res.data, '销售报表')
 											}
 										},
 										fail: err => {
@@ -275,13 +282,13 @@
 											'content-type': 'application/x-www-form-urlencoded',
 											'X-CSRF-TOKEN': res.data._token
 										},
-										data:{
-											timeType:'all',
-											timeDate:'2022-03-21'
+										data: {
+											timeType: 'all',
+											timeDate: '2022-03-21'
 										},
 										success: (res) => {
 											if (res.statusCode === 200) {
-												console.log(res.data)
+												console.log(res.data, '跟进客户列表')
 											}
 										},
 										fail: err => {
@@ -294,8 +301,8 @@
 											'content-type': 'application/x-www-form-urlencoded',
 											'X-CSRF-TOKEN': res.data._token
 										},
-										data:{
-											customer_id:1
+										data: {
+											customer_id: 1
 										},
 										success: (res) => {
 											if (res.statusCode === 200) {
@@ -306,18 +313,18 @@
 											console.log(err);
 										},
 									})
-									
-									if (loginInfo !== '') {
-										// uni.switchTab({
-										// 	url: `/pages/user/index`,
-										// })
-									} else {
-										this.$refs.uToast.show({
-											title: '请输入正确的用户名或者密码',
-											type: 'success',
 
-										})
-									}
+									// if (loginInfo !== '') {
+									// 	// uni.switchTab({
+									// 	// 	url: `/pages/user/index`,
+									// 	// })
+									// } else {
+									// 	this.$refs.uToast.show({
+									// 		title: '请输入正确的用户名或者密码',
+									// 		type: 'success',
+
+									// 	})
+									// }
 								}
 							},
 							fail: err => {
@@ -352,7 +359,7 @@
 					url: '/pages/forgetPass/forgetPass',
 				})
 			},
-		}
+		},
 	}
 </script>
 
@@ -440,5 +447,10 @@
 	/* 忘记密码字体 */
 	.wangji {
 		float: right;
+	}
+
+	.charts-box {
+		width: 100%;
+		height: 300px;
 	}
 </style>

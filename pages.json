@@ -13,7 +13,34 @@
 					"titleNView": false
 				}
 			}
-		}, {
+		}, 
+		{
+		    "path" : "pages/aCustInfo/aCustInfo",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+		    }
+		    
+		},
+		{
+		    "path" : "pages/aCwork/aCwork",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false
+				}
+		    }
+		    
+		},
+		{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "",
@@ -692,15 +719,15 @@
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [{
-			"pagePath": "pages/healthServices/healthServices",
+			"pagePath": "pages/aCustInfo/aCustInfo",
 			"iconPath": "static/images/healthServer.png",
 			"selectedIconPath": "static/images/healthServerGray.png",
-			"text": "健康服务"
+			"text": "概况"
 		}, {
-			"pagePath": "pages/life/life",
+			"pagePath": "pages/aCwork/aCwork",
 			"iconPath": "static/images/Treeofblackfoliage.png",
 			"selectedIconPath": "static/images/Treeofblackfoliage-pitch.png",
-			"text": "生活服务"
+			"text": "工作台"
 		},  {
 			"pagePath": "pages/serverInt/serverInt",
 			"iconPath": "static/images/serverGray.png",
